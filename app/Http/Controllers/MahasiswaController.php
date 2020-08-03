@@ -16,17 +16,15 @@ class MahasiswaController extends Controller
     public function index()
     {
         //return "Halaman Index Mahasiswa";
-        return view('mahasiswa.index'); //mahasiswa->index.blade.php
+        return view('mahasiswa.index');  
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function mhs_list()
     {
-        //
+        return Datatables::of(Mahasiswa::all())
+                ->removeColumn('id')
+                ->addIndexColumn()
+                ->make(true);//Good 
     }
 
     /**
